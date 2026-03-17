@@ -3,9 +3,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const getOpenAIClient = () => {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is missing. Please add it to your environment variables.");
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+};
 
 export const generateQuizWithAI = async (topic, difficulty, numQuestions = 5) => {
   try {
@@ -23,6 +28,7 @@ export const generateQuizWithAI = async (topic, difficulty, numQuestions = 5) =>
     ]
     `;
 
+    const openai = getOpenAIClient();
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: prompt }],
@@ -51,6 +57,7 @@ export const generateStudyMaterial = async (topic, level) => {
     Format as plain text.
     `;
 
+    const openai = getOpenAIClient();
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: prompt }],
@@ -72,6 +79,7 @@ export const generateFactWithAI = async () => {
     Keep it short and under 30 words. No intro text, just the fact.
     `;
 
+    const openai = getOpenAIClient();
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: prompt }],
