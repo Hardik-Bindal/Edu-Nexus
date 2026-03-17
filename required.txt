@@ -1,3 +1,0 @@
-Please provide the following to continue the project setup:
-
-GEMINI_API_KEY: We need your Gemini API Key for the 'Gemini Tutor' AI functionality and the conversational chatbot interactions.
