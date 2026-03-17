@@ -1,0 +1,45 @@
+{
+  "name": "edu-nexus-backend",
+  "version": "1.0.0",
+  "description": "Backend API for EduNexus project (Authentication, Quizzes, Results, AI integration, Gamification)",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/scripts/seedSampleData.js",
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "keywords": [
+    "education",
+    "quiz",
+    "AI",
+    "backend",
+    "nodejs",
+    "express",
+    "mongodb",
+    "gamification"
+  ],
+  "author": "Team EduNexus",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.1",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "openai": "^5.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

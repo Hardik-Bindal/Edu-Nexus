@@ -1,0 +1,282 @@
+EDUNEXUS PROJECT DOCUMENTATION
+=============================
+
+1. PROJECT OVERVIEW
+-------------------
+EduNexus is a full-stack education platform with role-based access for students and teachers.
+Core capabilities include:
+- Authentication and role-based protected routes
+- Quiz creation (manual + AI)
+- Quiz attempt and result evaluation
+- Teacher mark review workflow
+- Leaderboard and gamified eco points
+- Study material publishing and requests
+- Group collaboration and AI notes
+- News feed, daily facts, and daily games
+
+2. TECH STACK
+-------------
+Backend
+- Node.js (ES modules)
+- Express
+- MongoDB + Mongoose
+- JWT authentication
+- OpenAI SDK (AI quiz/material/fact generation)
+- Axios (news API fetch)
+- Multer (file uploads)
+- node-cron (periodic news refresh)
+
+Frontend
+- React 19 + Vite
+- React Router
+- Tailwind + custom CSS design system
+
+3. REPOSITORY STRUCTURE
+-----------------------
+Root
+- backend/
+- frontend/
+- documentation.txt
+- README.md
+
+Backend important folders
+- backend/src/index.js               -> app bootstrap, route mounting, DB connect, cron
+- backend/src/routes/                -> API route definitions
+- backend/src/controllers/           -> request handlers/business logic
+- backend/src/models/                -> Mongoose schemas
+- backend/src/middleware/            -> auth + error middleware
+- backend/src/utils/                 -> token + AI helper utilities
+
+Frontend important folders
+- frontend/src/App.jsx               -> all route declarations
+- frontend/src/pages/                -> all UI pages
+- frontend/src/components/           -> reusable UI components
+- frontend/src/services/             -> API client wrappers
+- frontend/src/constants/navLinks.js -> student/teacher nav links
+- frontend/src/index.css             -> global visual design system
+
+4. ENVIRONMENT CONFIGURATION
+----------------------------
+Backend env file: backend/.env
+Required keys:
+- PORT
+- MONGO_URI
+- JWT_SECRET
+- NEWS_API_KEY
+- OPENAI_API_KEY
+
+Template provided in:
+- backend/.env.example
+
+Frontend env file: frontend/.env
+Required key:
+- VITE_API_BASE_URL
+
+Template provided in:
+- frontend/.env.example
+
+Recommended local values:
+- backend PORT: 8080
+- frontend VITE_API_BASE_URL: http://localhost:8080/api
+
+5. RUNNING THE PROJECT
+----------------------
+Backend
+1. cd backend
+2. npm install
+3. cp .env.example .env
+4. fill real credentials
+5. npm run dev
+6. (optional demo data) npm run seed
+
+Frontend
+1. cd frontend
+2. npm install
+3. cp .env.example .env
+4. npm run dev
+
+Build/lint checks:
+- frontend: npm run lint
+- frontend: npm run build
+
+Sample seed details:
+- Seed command: backend -> npm run seed
+- Seed behavior: clears existing app collections and inserts demo data
+- Demo teachers:
+  - teacher@edunexus.demo / Teacher@123
+  - mentor@edunexus.demo / Teacher@123
+- Demo students:
+  - rahul@edunexus.demo / Student@123
+  - priya@edunexus.demo / Student@123
+  - arjun@edunexus.demo / Student@123
+  - sana@edunexus.demo / Student@123
+  - dev@edunexus.demo / Student@123
+
+6. AUTHENTICATION AND SESSION MODEL
+-----------------------------------
+- Auth endpoints:
+  - POST /api/auth/register
+  - POST /api/auth/login
+  - GET  /api/auth/profile
+- JWT token and user are stored on frontend in localStorage via session service:
+  - key: edunexus_token
+  - key: edunexus_user
+- ProtectedRoute enforces:
+  - user must be logged in
+  - role must match route role requirement
+
+7. BACKEND API MAP
+------------------
+Auth
+- POST /api/auth/register
+- POST /api/auth/login
+- GET  /api/auth/profile
+
+Quiz
+- POST /api/quiz
+- POST /api/quiz/create
+- POST /api/quiz/ai
+- PUT  /api/quiz/:id
+- DELETE /api/quiz/:id
+- GET  /api/quiz
+- GET  /api/quiz/:id
+
+Results
+- POST /api/results/submit
+- GET  /api/results/my
+- GET  /api/results/detail/:resultId
+- GET  /api/results/:quizId            (teacher)
+- PUT  /api/results/review             (teacher)
+
+Leaderboard
+- GET /api/leaderboard
+
+Materials
+- POST /api/materials                  (teacher)
+- GET  /api/materials
+- POST /api/materials/request          (student)
+
+Groups
+- POST /api/groups                     (teacher)
+- GET  /api/groups
+- POST /api/groups/add-member          (teacher)
+- POST /api/groups/material            (teacher)
+- POST /api/groups/upload-file         (teacher)
+- POST /api/groups/ai-material
+
+Facts
+- POST /api/facts                      (teacher)
+- GET  /api/facts
+
+News
+- GET /api/news
+- GET /api/news/fetch
+
+Games
+- GET /api/games
+- GET /api/games/daily
+
+AI helper endpoint
+- POST /api/ai/quiz                    (teacher)
+
+8. FRONTEND ROUTE MAP
+---------------------
+Public
+- /login
+- /register
+
+Student routes
+- /student
+- /student/attempt/:quizId
+- /student/results
+- /student/results/:resultId
+- /student/leaderboard
+- /student/materials
+- /student/groups
+- /student/news
+- /student/facts
+- /student/games
+
+Teacher routes
+- /teacher
+- /teacher/create-quiz
+- /teacher/update-quiz/:quizId
+- /teacher/results/:quizId
+- /teacher/result/:resultId
+- /teacher/leaderboard
+- /teacher/materials
+- /teacher/groups
+- /teacher/news
+- /teacher/facts
+- /teacher/games
+
+9. FRONTEND DESIGN SYSTEM (UPDATED)
+-----------------------------------
+The frontend has been restructured with a cohesive visual system:
+- Typography
+  - Headings: Space Grotesk
+  - Body: Public Sans
+- Premium visual direction
+  - dark glassmorphism surfaces with cyan + indigo + emerald glow accents
+  - animated grid/orb ambient background for all non-auth pages
+- Layout primitives
+  - .page-shell, .page-main, .hero, .panel, .panel-pad
+- Form primitives
+  - .field, .select-field, .textarea-field
+- Action primitives
+  - .btn, .btn-primary, .btn-secondary, .btn-warning, .btn-danger, .btn-ghost, .btn-sm
+- Feedback primitives
+  - .status, .status-info, .status-ok, .status-error
+- Navigation system
+  - sticky glass navbar with gradient logo, active chips, and role user pill
+- Component theme primitives
+  - .quiz-card, .news-card, .fact-card, .game-card, .leaderboard-list
+- Motion
+  - ambient shell drift + fade-up animation on cards/rows
+
+10. CORE DATA FLOWS
+-------------------
+A) Login flow
+- user submits credentials
+- frontend POST /api/auth/login
+- token + user stored in session service
+- route redirects to role dashboard
+
+B) Student quiz flow
+- student opens dashboard -> GET /api/quiz
+- opens attempt page -> GET /api/quiz/:quizId
+- submits answers -> POST /api/results/submit
+- redirected to result detail -> GET /api/results/detail/:resultId
+
+C) Teacher review flow
+- teacher opens quiz results -> GET /api/results/:quizId
+- opens single submission detail
+- edits marks -> PUT /api/results/review
+- refreshed detail fetched again
+
+D) Materials flow
+- teacher uploads -> POST /api/materials
+- student/teacher browse -> GET /api/materials
+- student requests AI material -> POST /api/materials/request
+
+E) Groups flow
+- teacher creates group and adds member
+- teacher uploads group material
+- student/teacher request AI notes for topic
+
+11. SECURITY NOTES
+------------------
+- Never commit production API keys or connection strings.
+- Rotate keys immediately if leaked.
+- Keep backend/.env out of version control.
+- Validate and sanitize all user inputs server-side.
+- Add rate limiting and request validation for production.
+
+12. NEXT RECOMMENDED ENHANCEMENTS
+---------------------------------
+- Add automated backend tests (Jest/Supertest)
+- Add schema validation (zod/joi) at API boundaries
+- Add optimistic UI + skeleton loaders
+- Add pagination and filters for materials/news/results
+- Add centralized error boundary and toast system
+- Add CI workflow for lint/build/test
