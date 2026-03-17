@@ -1,5 +1,7 @@
 import { apiRequest } from "./api";
 import { clearSession, saveSession, setUser } from "./session";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "./firebase";
 
 export const logout = () => {
   clearSession();
@@ -12,9 +14,6 @@ export const register = async (payload) => {
     auth: false,
   });
 };
-
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth, googleProvider } from "./firebase";
 
 export const login = async (payload) => {
   const data = await apiRequest("/auth/login", {
@@ -31,14 +30,13 @@ export const googleLogin = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const idToken = await result.user.getIdToken();
-    
-    // Send token to our backend
+
     const data = await apiRequest("/auth/google", {
       method: "POST",
       body: { token: idToken },
       auth: false,
     });
-    
+
     saveSession(data.token, data.user);
     return data;
   } catch (error) {

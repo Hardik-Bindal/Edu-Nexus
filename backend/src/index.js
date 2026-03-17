@@ -32,7 +32,17 @@ fs.mkdirSync(uploadsDir, { recursive: true });
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://edu-nexus-frontend-virid.vercel.app",
+    /\.vercel\.app$/
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use("/uploads", express.static(uploadsDir));
 
 // Test route
