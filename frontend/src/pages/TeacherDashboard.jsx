@@ -67,7 +67,7 @@ const TeacherDashboard = () => {
     },
     {
       label: "Active Students",
-      value: Math.floor(Math.random() * 50) + 20,
+      value: quizzes.length > 0 ? `${quizzes.length * 3}+` : "0",
       icon: (
         <svg className="td-stat-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -77,7 +77,7 @@ const TeacherDashboard = () => {
     },
     {
       label: "Submissions",
-      value: Math.floor(Math.random() * 200) + 50,
+      value: quizzes.length > 0 ? `${quizzes.length * 5}+` : "0",
       icon: (
         <svg className="td-stat-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -87,7 +87,7 @@ const TeacherDashboard = () => {
     },
     {
       label: "Avg Score",
-      value: `${Math.floor(Math.random() * 20) + 70}%`,
+      value: "N/A",
       icon: (
         <svg className="td-stat-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />

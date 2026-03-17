@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { studentLinks } from "../constants/navLinks";
 import { getLeaderboard, getQuizzes } from "../services/quizService";
+import { getMyResults } from "../services/resultService";
 import { getUser } from "../services/session";
 
 const StudentDashboard = () => {
@@ -10,6 +11,7 @@ const StudentDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [quizzes, setQuizzes] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [myResults, setMyResults] = useState([]);
   const [error, setError] = useState("");
   const [mounted, setMounted] = useState(false);
 
@@ -19,9 +21,10 @@ const StudentDashboard = () => {
       setLoading(true);
       setError("");
       try {
-        const [quizData, boardData] = await Promise.all([getQuizzes(), getLeaderboard()]);
+        const [quizData, boardData, resultData] = await Promise.all([getQuizzes(), getLeaderboard(), getMyResults()]);
         setQuizzes(quizData || []);
         setLeaderboard(boardData || []);
+        setMyResults(resultData || []);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -42,12 +45,14 @@ const StudentDashboard = () => {
   }, [leaderboard, user?.name]);
 
   const completedQuizzes = useMemo(() => {
-    return Math.floor(Math.random() * 10) + 5;
-  }, []);
+    return myResults.length;
+  }, [myResults]);
 
   const currentStreak = useMemo(() => {
-    return Math.floor(Math.random() * 7) + 1;
-  }, []);
+    // Derive a deterministic streak from user's ecoPoints
+    const pts = user?.ecoPoints || 0;
+    return pts > 0 ? Math.min(7, Math.floor(pts / 5) + 1) : 1;
+  }, [user?.ecoPoints]);
 
   const stats = [
     {
