@@ -235,6 +235,120 @@ const seed = async () => {
     ],
   });
 
+  const additionalQuizzes = [
+    {
+      title: "Physics Basics: Motion and Force",
+      topic: "Physics",
+      difficulty: "easy",
+      level: "Grade 9",
+      timeLimit: 15,
+      createdBy: teacher._id,
+      questions: [
+        mkQuestion("What is the standard unit of force?", ["Newton", "Joule", "Watt", "Pascal"], "Newton", "Force is measured in Newtons in the SI system.", 1),
+        mkQuestion("Which law states 'For every action, there is an equal and opposite reaction'?", ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"], "Newton's Third Law", "This is the definition of Newton's Third Law of Motion.", 1),
+        mkQuestion("What is the acceleration due to gravity on Earth?", ["9.8 m/s^2", "10 m/s", "9.8 km/s", "8.9 m/s^2"], "9.8 m/s^2", "Standard gravity on Earth is approximately 9.8 m/s^2.", 1)
+      ]
+    },
+    {
+      title: "Advanced Mathematics: Calculus",
+      topic: "Mathematics",
+      difficulty: "hard",
+      level: "Grade 12",
+      timeLimit: 25,
+      createdBy: mentor._id,
+      questions: [
+        mkQuestion("What is the derivative of x^2?", ["x", "2x", "x^3/3", "2x^2"], "2x", "Using the power rule, d/dx(x^2) = 2x.", 3),
+        mkQuestion("What is the integral of 1/x?", ["x", "ln|x|", "e^x", "1/x^2"], "ln|x|", "The antiderivative of 1/x is the natural logarithm of absolute x.", 3)
+      ]
+    },
+    {
+      title: "World History: WWII",
+      topic: "History",
+      difficulty: "medium",
+      level: "Grade 10",
+      timeLimit: 20,
+      createdBy: teacher._id,
+      questions: [
+        mkQuestion("In what year did World War II end?", ["1943", "1945", "1947", "1950"], "1945", "WWII ended in 1945 with the surrender of Germany and Japan.", 2),
+        mkQuestion("Which of these countries was part of the Axis powers?", ["USA", "Soviet Union", "Japan", "Britain"], "Japan", "Germany, Italy, and Japan formed the core of the Axis powers.", 2)
+      ]
+    },
+    {
+      title: "Geographic Wonders",
+      topic: "Geography",
+      difficulty: "easy",
+      level: "Grade 8",
+      timeLimit: 10,
+      createdBy: mentor._id,
+      questions: [
+        mkQuestion("What is the tallest mountain in the world?", ["K2", "Mount Everest", "Mount Kilimanjaro", "Denali"], "Mount Everest", "Mount Everest is the highest peak above sea level.", 1),
+        mkQuestion("Which is the longest river in the world?", ["Amazon", "Nile", "Yangtze", "Mississippi"], "Nile", "The Nile is traditionally considered the longest river in the world.", 1)
+      ]
+    },
+    {
+      title: "Intro to Computer Science",
+      topic: "Computer Science",
+      difficulty: "medium",
+      level: "Grade 11",
+      timeLimit: 15,
+      createdBy: teacher._id,
+      questions: [
+        mkQuestion("Which of these is not a programming language?", ["Python", "Java", "HTML", "C++"], "HTML", "HTML is a markup language, not a Turing-complete programming language.", 2),
+        mkQuestion("What does CPU stand for?", ["Central Process Unit", "Computer Personal Unit", "Central Processing Unit", "Central Processor Unit"], "Central Processing Unit", "The CPU acts as the brain of the computer.", 2)
+      ]
+    },
+    {
+      title: "Human Anatomy",
+      topic: "Biology",
+      difficulty: "hard",
+      level: "Grade 12",
+      timeLimit: 20,
+      createdBy: mentor._id,
+      questions: [
+        mkQuestion("What is the largest organ in the human body?", ["Liver", "Brain", "Heart", "Skin"], "Skin", "The skin is the largest organ by surface area and weight.", 3),
+        mkQuestion("What part of the brain controls balance?", ["Cerebrum", "Cerebellum", "Brainstem", "Hypothalamus"], "Cerebellum", "The cerebellum is responsible for motor control and balance.", 3)
+      ]
+    },
+    {
+      title: "Chemical Reactions",
+      topic: "Chemistry",
+      difficulty: "medium",
+      level: "Grade 10",
+      timeLimit: 20,
+      createdBy: teacher._id,
+      questions: [
+        mkQuestion("What is the chemical formula for water?", ["H2O2", "CO2", "H2O", "O2"], "H2O", "Water consists of two hydrogen atoms and one oxygen.", 2),
+        mkQuestion("Which of these is a noble gas?", ["Oxygen", "Nitrogen", "Helium", "Chlorine"], "Helium", "Helium is a noble gas in Group 18 of the periodic table.", 2)
+      ]
+    },
+    {
+      title: "Shakespearean Literature",
+      topic: "English",
+      difficulty: "medium",
+      level: "Grade 11",
+      timeLimit: 15,
+      createdBy: mentor._id,
+      questions: [
+        mkQuestion("Who wrote Hamlet?", ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"], "William Shakespeare", "Hamlet is one of Shakespeare's most famous tragedies.", 2),
+        mkQuestion("Which play features the character 'Puck'?", ["Macbeth", "Othello", "A Midsummer Night's Dream", "Romeo and Juliet"], "A Midsummer Night's Dream", "Puck is a mischievous fairy in this comedy.", 2)
+      ]
+    },
+    {
+      title: "Astronomy Basics",
+      topic: "Science",
+      difficulty: "easy",
+      level: "Grade 8",
+      timeLimit: 10,
+      createdBy: teacher._id,
+      questions: [
+        mkQuestion("Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter", "Saturn"], "Mars", "Mars appears red due to iron oxide on its surface.", 1),
+        mkQuestion("What is the closest star to Earth?", ["Sirius", "Alpha Centauri", "The Sun", "Proxima Centauri"], "The Sun", "The Sun is our solar system's central star.", 1)
+      ]
+    }
+  ];
+
+  await Quiz.insertMany(additionalQuizzes);
+
   const partialMarksForPriya = {
     [String(energyQuiz.questions[1]._id)]: 1,
   };
