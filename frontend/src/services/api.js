@@ -1,8 +1,10 @@
 import { getToken } from "./session";
 
-export const API_BASE = (
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api"
-).replace(/\/$/, "");
+let rawBase = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api";
+if (!rawBase.endsWith("/api") && !rawBase.endsWith("/api/")) {
+  rawBase = rawBase.replace(/\/$/, "") + "/api";
+}
+export const API_BASE = rawBase.replace(/\/$/, "");
 
 const parseResponse = async (response) => {
   const contentType = response.headers.get("content-type") || "";
