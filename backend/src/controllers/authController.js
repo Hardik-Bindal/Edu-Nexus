@@ -77,8 +77,8 @@ export const googleLogin = async (req, res) => {
       user = await User.create({
         name: name || "Google User",
         email,
-        password: await bcrypt.hash(googleId, 10), // Dummy password
-        role: "student", // Default role
+        password: null, // Google users don't use password login
+        role: "student",
         googleId,
         avatar
       });
