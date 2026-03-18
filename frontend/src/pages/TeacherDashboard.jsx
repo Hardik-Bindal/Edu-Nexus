@@ -63,7 +63,7 @@ const TeacherDashboard = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
         </svg>
       ),
-      color: "cyan"
+      color: "cyan",
     },
     {
       label: "Active Students",
@@ -73,7 +73,7 @@ const TeacherDashboard = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       ),
-      color: "purple"
+      color: "purple",
     },
     {
       label: "Submissions",
@@ -83,7 +83,7 @@ const TeacherDashboard = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      color: "green"
+      color: "green",
     },
     {
       label: "Avg Score",
@@ -93,8 +93,8 @@ const TeacherDashboard = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
-      color: "orange"
-    }
+      color: "orange",
+    },
   ];
 
   const quickActions = [
@@ -104,15 +104,19 @@ const TeacherDashboard = () => {
     { label: "Groups", to: "/teacher/groups", icon: "👥" },
     { label: "News", to: "/teacher/news", icon: "📰" },
     { label: "Facts", to: "/teacher/facts", icon: "💡" },
-    { label: "Games", to: "/teacher/games", icon: "🎮" }
+    { label: "Games", to: "/teacher/games", icon: "🎮" },
   ];
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty?.toLowerCase()) {
-      case 'easy': return 'td-difficulty-easy';
-      case 'medium': return 'td-difficulty-medium';
-      case 'hard': return 'td-difficulty-hard';
-      default: return 'td-difficulty-medium';
+      case "easy":
+        return "td-difficulty-easy";
+      case "medium":
+        return "td-difficulty-medium";
+      case "hard":
+        return "td-difficulty-hard";
+      default:
+        return "td-difficulty-medium";
     }
   };
 
@@ -120,12 +124,12 @@ const TeacherDashboard = () => {
     <>
       <style>{`
         /* ===========================================
-           EDUNEXUS TEACHER DASHBOARD - PREMIUM THEME
+           EDUNEXUS TEACHER DASHBOARD - LIGHT SOFT THEME
            =========================================== */
 
         .td-page {
           min-height: 100vh;
-          background: #0a0a0f;
+          background: #f4f6fb;
           position: relative;
           overflow-x: hidden;
         }
@@ -143,17 +147,17 @@ const TeacherDashboard = () => {
           position: absolute;
           inset: 0;
           background: 
-            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.12), transparent),
-            radial-gradient(ellipse 50% 50% at 90% 20%, rgba(236, 72, 153, 0.1), transparent),
-            radial-gradient(ellipse 50% 50% at 10% 80%, rgba(6, 182, 212, 0.08), transparent);
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.07), transparent),
+            radial-gradient(ellipse 50% 50% at 90% 20%, rgba(236, 72, 153, 0.05), transparent),
+            radial-gradient(ellipse 50% 50% at 10% 80%, rgba(6, 182, 212, 0.05), transparent);
         }
 
         .td-bg-grid {
           position: absolute;
           inset: 0;
           background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            linear-gradient(rgba(100, 116, 139, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(100, 116, 139, 0.05) 1px, transparent 1px);
           background-size: 50px 50px;
           mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
           -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
@@ -162,14 +166,14 @@ const TeacherDashboard = () => {
         .td-bg-orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(100px);
+          filter: blur(120px);
           animation: td-orb-float 25s ease-in-out infinite;
         }
 
         .td-bg-orb-1 {
           width: 500px;
           height: 500px;
-          background: rgba(139, 92, 246, 0.15);
+          background: rgba(139, 92, 246, 0.08);
           top: -100px;
           right: -100px;
         }
@@ -177,7 +181,7 @@ const TeacherDashboard = () => {
         .td-bg-orb-2 {
           width: 400px;
           height: 400px;
-          background: rgba(236, 72, 153, 0.12);
+          background: rgba(236, 72, 153, 0.06);
           bottom: -100px;
           left: -100px;
           animation-delay: -10s;
@@ -186,7 +190,7 @@ const TeacherDashboard = () => {
         .td-bg-orb-3 {
           width: 300px;
           height: 300px;
-          background: rgba(6, 182, 212, 0.1);
+          background: rgba(6, 182, 212, 0.05);
           top: 50%;
           left: 30%;
           animation-delay: -15s;
@@ -198,23 +202,126 @@ const TeacherDashboard = () => {
           66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
+        /* Navbar */
+        .td-navbar {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(100, 116, 139, 0.12);
+          padding: 0 1.5rem;
+        }
+
+        .td-navbar-inner {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 64px;
+        }
+
+        .td-navbar-brand {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .td-navbar-logo {
+          width: 36px;
+          height: 36px;
+        }
+
+        .td-navbar-title {
+          font-family: 'Space Grotesk', system-ui, sans-serif;
+          font-size: 1.25rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .td-navbar-links {
+          display: none;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        @media (min-width: 1024px) {
+          .td-navbar-links {
+            display: flex;
+          }
+        }
+
+        .td-navbar-link {
+          padding: 0.5rem 1rem;
+          font-size: 0.875rem;
+          color: #64748b;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: all 0.2s ease;
+        }
+
+        .td-navbar-link:hover {
+          color: #0f172a;
+          background: rgba(100, 116, 139, 0.08);
+        }
+
+        .td-navbar-link-active {
+          color: #7c3aed;
+          background: rgba(139, 92, 246, 0.08);
+        }
+
+        .td-navbar-user {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .td-navbar-avatar {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          color: white;
+          font-size: 0.875rem;
+        }
+
+        .td-navbar-role {
+          padding: 0.25rem 0.75rem;
+          background: rgba(139, 92, 246, 0.08);
+          border: 1px solid rgba(139, 92, 246, 0.18);
+          border-radius: 100px;
+          font-size: 0.75rem;
+          color: #7c3aed;
+          font-weight: 500;
+        }
+
         /* Mobile Menu Button */
+        .td-mobile-menu-btn {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 40px;
           height: 40px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(100, 116, 139, 0.06);
+          border: 1px solid rgba(100, 116, 139, 0.12);
           border-radius: 10px;
-          color: #94a3b8;
+          color: #64748b;
           cursor: pointer;
           transition: all 0.2s ease;
         }
 
         .td-mobile-menu-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          color: #f1f5f9;
+          background: rgba(100, 116, 139, 0.1);
+          color: #0f172a;
         }
 
         @media (min-width: 1024px) {
@@ -273,18 +380,18 @@ const TeacherDashboard = () => {
           align-items: center;
           gap: 0.5rem;
           padding: 0.5rem 1rem;
-          background: rgba(139, 92, 246, 0.1);
-          border: 1px solid rgba(139, 92, 246, 0.2);
+          background: rgba(139, 92, 246, 0.08);
+          border: 1px solid rgba(139, 92, 246, 0.18);
           border-radius: 100px;
           font-size: 0.875rem;
-          color: #a78bfa;
+          color: #7c3aed;
           margin-bottom: 1rem;
         }
 
         .td-hero-greeting-dot {
           width: 8px;
           height: 8px;
-          background: #a78bfa;
+          background: #7c3aed;
           border-radius: 50%;
           animation: td-pulse 2s ease-in-out infinite;
         }
@@ -298,7 +405,7 @@ const TeacherDashboard = () => {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 2.25rem;
           font-weight: 700;
-          color: #f8fafc;
+          color: #0f172a;
           line-height: 1.2;
           margin-bottom: 0.75rem;
         }
@@ -310,7 +417,7 @@ const TeacherDashboard = () => {
         }
 
         .td-hero-title-highlight {
-          background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+          background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -324,7 +431,7 @@ const TeacherDashboard = () => {
 
         .td-hero-date {
           font-size: 0.875rem;
-          color: #475569;
+          color: #94a3b8;
           margin-top: 1rem;
         }
 
@@ -376,7 +483,7 @@ const TeacherDashboard = () => {
 
         .td-btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.5);
+          box-shadow: 0 8px 24px -8px rgba(139, 92, 246, 0.4);
         }
 
         .td-btn-primary span {
@@ -385,14 +492,15 @@ const TeacherDashboard = () => {
         }
 
         .td-btn-secondary {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #e2e8f0;
+          background: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(100, 116, 139, 0.18);
+          color: #334155;
         }
 
         .td-btn-secondary:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.95);
+          border-color: rgba(100, 116, 139, 0.28);
+          box-shadow: 0 4px 12px rgba(100, 116, 139, 0.08);
         }
 
         /* Stats Grid */
@@ -411,17 +519,20 @@ const TeacherDashboard = () => {
 
         .td-stat-card {
           padding: 1.25rem;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(100, 116, 139, 0.1);
           border-radius: 16px;
           transition: all 0.3s ease;
           animation: td-fade-up 0.5s ease backwards;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
         }
 
         .td-stat-card:hover {
-          background: rgba(255, 255, 255, 0.04);
-          border-color: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.95);
+          border-color: rgba(100, 116, 139, 0.18);
           transform: translateY(-2px);
+          box-shadow: 0 4px 20px rgba(100, 116, 139, 0.08);
         }
 
         @keyframes td-fade-up {
@@ -448,23 +559,23 @@ const TeacherDashboard = () => {
         }
 
         .td-stat-icon-wrap.cyan {
-          background: rgba(6, 182, 212, 0.15);
-          color: #22d3ee;
+          background: rgba(6, 182, 212, 0.1);
+          color: #0891b2;
         }
 
         .td-stat-icon-wrap.purple {
-          background: rgba(139, 92, 246, 0.15);
-          color: #a78bfa;
+          background: rgba(139, 92, 246, 0.1);
+          color: #7c3aed;
         }
 
         .td-stat-icon-wrap.green {
-          background: rgba(16, 185, 129, 0.15);
-          color: #34d399;
+          background: rgba(16, 185, 129, 0.1);
+          color: #059669;
         }
 
         .td-stat-icon-wrap.orange {
-          background: rgba(251, 146, 60, 0.15);
-          color: #fb923c;
+          background: rgba(251, 146, 60, 0.1);
+          color: #ea580c;
         }
 
         .td-stat-icon {
@@ -476,7 +587,7 @@ const TeacherDashboard = () => {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 1.75rem;
           font-weight: 700;
-          color: #f8fafc;
+          color: #0f172a;
           line-height: 1;
         }
 
@@ -504,21 +615,21 @@ const TeacherDashboard = () => {
         }
 
         .td-message-info {
-          background: rgba(6, 182, 212, 0.1);
-          border: 1px solid rgba(6, 182, 212, 0.2);
-          color: #22d3ee;
+          background: rgba(6, 182, 212, 0.06);
+          border: 1px solid rgba(6, 182, 212, 0.15);
+          color: #0891b2;
         }
 
         .td-message-success {
-          background: rgba(16, 185, 129, 0.1);
-          border: 1px solid rgba(16, 185, 129, 0.2);
-          color: #34d399;
+          background: rgba(16, 185, 129, 0.06);
+          border: 1px solid rgba(16, 185, 129, 0.15);
+          color: #059669;
         }
 
         .td-message-error {
-          background: rgba(239, 68, 68, 0.1);
-          border: 1px solid rgba(239, 68, 68, 0.2);
-          color: #fca5a5;
+          background: rgba(239, 68, 68, 0.06);
+          border: 1px solid rgba(239, 68, 68, 0.15);
+          color: #dc2626;
         }
 
         /* Main Layout */
@@ -535,15 +646,18 @@ const TeacherDashboard = () => {
 
         /* Section Panels */
         .td-panel {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.75);
+          border: 1px solid rgba(100, 116, 139, 0.1);
           border-radius: 20px;
           overflow: hidden;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: 0 1px 3px rgba(100, 116, 139, 0.04);
         }
 
         .td-panel-header {
           padding: 1.25rem 1.5rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(100, 116, 139, 0.08);
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -553,7 +667,7 @@ const TeacherDashboard = () => {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 1.125rem;
           font-weight: 600;
-          color: #f1f5f9;
+          color: #0f172a;
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -565,10 +679,10 @@ const TeacherDashboard = () => {
 
         .td-panel-badge {
           padding: 0.25rem 0.75rem;
-          background: rgba(139, 92, 246, 0.1);
+          background: rgba(139, 92, 246, 0.08);
           border-radius: 100px;
           font-size: 0.75rem;
-          color: #a78bfa;
+          color: #7c3aed;
           font-weight: 500;
         }
 
@@ -586,7 +700,7 @@ const TeacherDashboard = () => {
           width: 48px;
           height: 48px;
           margin: 0 auto 1rem;
-          color: #475569;
+          color: #94a3b8;
         }
 
         /* Quiz Cards */
@@ -598,16 +712,17 @@ const TeacherDashboard = () => {
 
         .td-quiz-card {
           padding: 1.25rem;
-          background: rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(248, 250, 252, 0.9);
+          border: 1px solid rgba(100, 116, 139, 0.08);
           border-radius: 14px;
           transition: all 0.3s ease;
           animation: td-fade-up 0.4s ease backwards;
         }
 
         .td-quiz-card:hover {
-          background: rgba(255, 255, 255, 0.03);
-          border-color: rgba(139, 92, 246, 0.3);
+          background: #ffffff;
+          border-color: rgba(139, 92, 246, 0.25);
+          box-shadow: 0 4px 16px rgba(100, 116, 139, 0.08);
         }
 
         .td-quiz-card-header {
@@ -623,7 +738,7 @@ const TeacherDashboard = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+          background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
           border-radius: 12px;
           font-size: 1.5rem;
           flex-shrink: 0;
@@ -638,7 +753,7 @@ const TeacherDashboard = () => {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 1.0625rem;
           font-weight: 600;
-          color: #f1f5f9;
+          color: #0f172a;
           margin-bottom: 0.375rem;
         }
 
@@ -672,18 +787,18 @@ const TeacherDashboard = () => {
         }
 
         .td-difficulty-easy {
-          background: rgba(16, 185, 129, 0.15);
-          color: #34d399;
+          background: rgba(16, 185, 129, 0.1);
+          color: #059669;
         }
 
         .td-difficulty-medium {
-          background: rgba(251, 191, 36, 0.15);
-          color: #fbbf24;
+          background: rgba(245, 158, 11, 0.1);
+          color: #d97706;
         }
 
         .td-difficulty-hard {
-          background: rgba(239, 68, 68, 0.15);
-          color: #f87171;
+          background: rgba(239, 68, 68, 0.1);
+          color: #dc2626;
         }
 
         .td-quiz-actions {
@@ -711,30 +826,30 @@ const TeacherDashboard = () => {
         }
 
         .td-quiz-btn-view {
-          background: rgba(6, 182, 212, 0.15);
-          color: #22d3ee;
+          background: rgba(6, 182, 212, 0.1);
+          color: #0891b2;
         }
 
         .td-quiz-btn-view:hover {
-          background: rgba(6, 182, 212, 0.25);
+          background: rgba(6, 182, 212, 0.18);
         }
 
         .td-quiz-btn-edit {
-          background: rgba(139, 92, 246, 0.15);
-          color: #a78bfa;
+          background: rgba(139, 92, 246, 0.1);
+          color: #7c3aed;
         }
 
         .td-quiz-btn-edit:hover {
-          background: rgba(139, 92, 246, 0.25);
+          background: rgba(139, 92, 246, 0.18);
         }
 
         .td-quiz-btn-delete {
-          background: rgba(239, 68, 68, 0.15);
-          color: #f87171;
+          background: rgba(239, 68, 68, 0.1);
+          color: #dc2626;
         }
 
         .td-quiz-btn-delete:hover {
-          background: rgba(239, 68, 68, 0.25);
+          background: rgba(239, 68, 68, 0.18);
         }
 
         /* Quick Actions */
@@ -751,22 +866,23 @@ const TeacherDashboard = () => {
           align-items: center;
           gap: 0.5rem;
           padding: 1rem 0.75rem;
-          background: rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(248, 250, 252, 0.9);
+          border: 1px solid rgba(100, 116, 139, 0.08);
           border-radius: 12px;
           cursor: pointer;
           transition: all 0.3s ease;
         }
 
         .td-quick-btn:hover {
-          background: rgba(255, 255, 255, 0.04);
-          border-color: rgba(139, 92, 246, 0.3);
+          background: #ffffff;
+          border-color: rgba(139, 92, 246, 0.25);
           transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(100, 116, 139, 0.08);
         }
 
         .td-quick-btn-primary {
-          background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
-          border-color: rgba(139, 92, 246, 0.3);
+          background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
+          border-color: rgba(139, 92, 246, 0.2);
         }
 
         .td-quick-btn-icon {
@@ -776,7 +892,7 @@ const TeacherDashboard = () => {
         .td-quick-btn-label {
           font-size: 0.75rem;
           font-weight: 500;
-          color: #94a3b8;
+          color: #64748b;
         }
 
         /* Loading State */
@@ -786,7 +902,7 @@ const TeacherDashboard = () => {
           justify-content: center;
           gap: 0.75rem;
           padding: 3rem;
-          color: #a78bfa;
+          color: #7c3aed;
         }
 
         .td-spinner {
@@ -807,8 +923,9 @@ const TeacherDashboard = () => {
           position: fixed;
           inset: 0;
           z-index: 1000;
-          background: rgba(0, 0, 0, 0.7);
-          backdrop-filter: blur(4px);
+          background: rgba(15, 23, 42, 0.4);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -823,10 +940,11 @@ const TeacherDashboard = () => {
         .td-modal {
           width: 100%;
           max-width: 400px;
-          background: #1a1a24;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: #ffffff;
+          border: 1px solid rgba(100, 116, 139, 0.12);
           border-radius: 20px;
           padding: 2rem;
+          box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
           animation: td-modal-scale 0.3s ease;
         }
 
@@ -844,9 +962,9 @@ const TeacherDashboard = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(239, 68, 68, 0.15);
+          background: rgba(239, 68, 68, 0.08);
           border-radius: 50%;
-          color: #f87171;
+          color: #dc2626;
         }
 
         .td-modal-icon svg {
@@ -858,14 +976,14 @@ const TeacherDashboard = () => {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 1.25rem;
           font-weight: 600;
-          color: #f8fafc;
+          color: #0f172a;
           text-align: center;
           margin-bottom: 0.5rem;
         }
 
         .td-modal-text {
           font-size: 0.9375rem;
-          color: #94a3b8;
+          color: #64748b;
           text-align: center;
           margin-bottom: 1.5rem;
         }
@@ -887,12 +1005,12 @@ const TeacherDashboard = () => {
         }
 
         .td-modal-btn-cancel {
-          background: rgba(255, 255, 255, 0.05);
-          color: #e2e8f0;
+          background: rgba(100, 116, 139, 0.08);
+          color: #334155;
         }
 
         .td-modal-btn-cancel:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(100, 116, 139, 0.14);
         }
 
         .td-modal-btn-delete {
@@ -901,7 +1019,8 @@ const TeacherDashboard = () => {
         }
 
         .td-modal-btn-delete:hover {
-          box-shadow: 0 5px 20px -5px rgba(239, 68, 68, 0.5);
+          box-shadow: 0 5px 20px -5px rgba(239, 68, 68, 0.4);
+          transform: translateY(-1px);
         }
 
         /* View All Link */
@@ -911,8 +1030,8 @@ const TeacherDashboard = () => {
           justify-content: center;
           gap: 0.5rem;
           padding: 0.875rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-          color: #a78bfa;
+          border-top: 1px solid rgba(100, 116, 139, 0.08);
+          color: #7c3aed;
           font-size: 0.875rem;
           font-weight: 500;
           cursor: pointer;
@@ -920,8 +1039,8 @@ const TeacherDashboard = () => {
         }
 
         .td-view-all:hover {
-          background: rgba(139, 92, 246, 0.05);
-          color: #c4b5fd;
+          background: rgba(139, 92, 246, 0.04);
+          color: #6d28d9;
         }
 
         .td-view-all svg {
@@ -940,7 +1059,7 @@ const TeacherDashboard = () => {
           align-items: center;
           gap: 0.875rem;
           padding: 0.875rem 1rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+          border-bottom: 1px solid rgba(100, 116, 139, 0.06);
           transition: background 0.2s ease;
         }
 
@@ -949,7 +1068,7 @@ const TeacherDashboard = () => {
         }
 
         .td-activity-item:hover {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(100, 116, 139, 0.03);
         }
 
         .td-activity-icon {
@@ -958,7 +1077,7 @@ const TeacherDashboard = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(139, 92, 246, 0.1);
+          background: rgba(139, 92, 246, 0.06);
           border-radius: 10px;
           font-size: 1rem;
           flex-shrink: 0;
@@ -971,7 +1090,7 @@ const TeacherDashboard = () => {
 
         .td-activity-text {
           font-size: 0.875rem;
-          color: #e2e8f0;
+          color: #1e293b;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -979,7 +1098,7 @@ const TeacherDashboard = () => {
 
         .td-activity-time {
           font-size: 0.75rem;
-          color: #64748b;
+          color: #94a3b8;
           margin-top: 0.125rem;
         }
 
@@ -1047,22 +1166,44 @@ const TeacherDashboard = () => {
 
         {/* Delete Confirmation Modal */}
         {deleteConfirm && (
-          <div className="td-modal-overlay" onClick={() => setDeleteConfirm(null)}>
-            <div className="td-modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="td-modal-overlay"
+            onClick={() => setDeleteConfirm(null)}
+          >
+            <div
+              className="td-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="td-modal-icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
                 </svg>
               </div>
               <h3 className="td-modal-title">Delete Quiz?</h3>
               <p className="td-modal-text">
-                This action cannot be undone. All associated results will also be removed.
+                This action cannot be undone. All associated results will
+                also be removed.
               </p>
               <div className="td-modal-actions">
-                <button className="td-modal-btn td-modal-btn-cancel" onClick={() => setDeleteConfirm(null)}>
+                <button
+                  className="td-modal-btn td-modal-btn-cancel"
+                  onClick={() => setDeleteConfirm(null)}
+                >
                   Cancel
                 </button>
-                <button className="td-modal-btn td-modal-btn-delete" onClick={() => handleDelete(deleteConfirm)}>
+                <button
+                  className="td-modal-btn td-modal-btn-delete"
+                  onClick={() => handleDelete(deleteConfirm)}
+                >
                   Delete Quiz
                 </button>
               </div>
@@ -1074,13 +1215,34 @@ const TeacherDashboard = () => {
         <nav className="td-navbar">
           <div className="td-navbar-inner">
             <div className="td-navbar-brand">
-              <svg className="td-navbar-logo" viewBox="0 0 40 40" fill="none">
-                <rect width="40" height="40" rx="12" fill="url(#td-logo-grad)"/>
-                <path d="M12 20L18 26L28 14" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg
+                className="td-navbar-logo"
+                viewBox="0 0 40 40"
+                fill="none"
+              >
+                <rect
+                  width="40"
+                  height="40"
+                  rx="12"
+                  fill="url(#td-logo-grad)"
+                />
+                <path
+                  d="M12 20L18 26L28 14"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
                 <defs>
-                  <linearGradient id="td-logo-grad" x1="0" y1="0" x2="40" y2="40">
-                    <stop stopColor="#8B5CF6"/>
-                    <stop offset="1" stopColor="#EC4899"/>
+                  <linearGradient
+                    id="td-logo-grad"
+                    x1="0"
+                    y1="0"
+                    x2="40"
+                    y2="40"
+                  >
+                    <stop stopColor="#8B5CF6" />
+                    <stop offset="1" stopColor="#EC4899" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -1096,7 +1258,9 @@ const TeacherDashboard = () => {
                     e.preventDefault();
                     navigate(link.to);
                   }}
-                  className={`td-navbar-link ${index === 0 ? 'td-navbar-link-active' : ''}`}
+                  className={`td-navbar-link ${
+                    index === 0 ? "td-navbar-link-active" : ""
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -1109,8 +1273,17 @@ const TeacherDashboard = () => {
                 {user?.name?.charAt(0)?.toUpperCase() || "T"}
               </div>
               <button className="td-mobile-menu-btn">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </button>
             </div>
@@ -1118,7 +1291,7 @@ const TeacherDashboard = () => {
         </nav>
 
         {/* Main Content */}
-        <main className={`td-main ${mounted ? 'td-mounted' : ''}`}>
+        <main className={`td-main ${mounted ? "td-mounted" : ""}`}>
           {/* Hero Section */}
           <section className="td-hero">
             <div className="td-hero-content">
@@ -1128,21 +1301,36 @@ const TeacherDashboard = () => {
                   <span>{getTimeOfDay()}</span>
                 </div>
                 <h1 className="td-hero-title">
-                  Welcome, <span className="td-hero-title-highlight">{user?.name || "Teacher"}</span>
+                  Welcome,{" "}
+                  <span className="td-hero-title-highlight">
+                    {user?.name || "Teacher"}
+                  </span>
                 </h1>
                 <p className="td-hero-subtitle">
-                  Manage your quizzes, review student submissions, and track classroom performance.
+                  Manage your quizzes, review student submissions, and
+                  track classroom performance.
                 </p>
                 <p className="td-hero-date">
-                  {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                  {new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </p>
               </div>
               <div className="td-hero-actions">
-                <button className="td-btn td-btn-primary" onClick={() => navigate("/teacher/create-quiz")}>
+                <button
+                  className="td-btn td-btn-primary"
+                  onClick={() => navigate("/teacher/create-quiz")}
+                >
                   <span>➕</span>
                   <span>Create Quiz</span>
                 </button>
-                <button className="td-btn td-btn-secondary" onClick={() => navigate("/teacher/groups")}>
+                <button
+                  className="td-btn td-btn-secondary"
+                  onClick={() => navigate("/teacher/groups")}
+                >
                   <span>👥</span>
                   <span>Manage Groups</span>
                 </button>
@@ -1173,18 +1361,45 @@ const TeacherDashboard = () => {
           {message && (
             <div className={`td-message td-message-${messageType}`}>
               {messageType === "success" && (
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               )}
               {messageType === "error" && (
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               )}
               {messageType === "info" && (
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               )}
               <span>{message}</span>
@@ -1201,7 +1416,9 @@ const TeacherDashboard = () => {
                     <span className="td-panel-title-icon">📝</span>
                     Your Quizzes
                   </h2>
-                  <span className="td-panel-badge">{quizzes.length} Total</span>
+                  <span className="td-panel-badge">
+                    {quizzes.length} Total
+                  </span>
                 </div>
 
                 {loading ? (
@@ -1211,11 +1428,28 @@ const TeacherDashboard = () => {
                   </div>
                 ) : quizzes.length === 0 ? (
                   <div className="td-panel-empty">
-                    <svg className="td-panel-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    <svg
+                      className="td-panel-empty-icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      />
                     </svg>
                     <p>No quizzes created yet.</p>
-                    <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>Create your first quiz to get started!</p>
+                    <p
+                      style={{
+                        fontSize: "0.875rem",
+                        marginTop: "0.5rem",
+                      }}
+                    >
+                      Create your first quiz to get started!
+                    </p>
                   </div>
                 ) : (
                   <div className="td-panel-body">
@@ -1224,27 +1458,54 @@ const TeacherDashboard = () => {
                         <div
                           key={quiz._id}
                           className="td-quiz-card"
-                          style={{ animationDelay: `${index * 80}ms` }}
+                          style={{
+                            animationDelay: `${index * 80}ms`,
+                          }}
                         >
                           <div className="td-quiz-card-header">
                             <div className="td-quiz-icon">📚</div>
                             <div className="td-quiz-info">
-                              <h3 className="td-quiz-title">{quiz.title}</h3>
+                              <h3 className="td-quiz-title">
+                                {quiz.title}
+                              </h3>
                               <div className="td-quiz-meta">
                                 <span className="td-quiz-meta-item">
-                                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  <svg
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
                                   </svg>
-                                  {quiz.questions?.length || 0} Questions
+                                  {quiz.questions?.length || 0}{" "}
+                                  Questions
                                 </span>
                                 <span className="td-quiz-meta-item">
-                                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  <svg
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
                                   </svg>
                                   {quiz.duration || 30} min
                                 </span>
-                                <span className={`td-difficulty ${getDifficultyColor(quiz.difficulty)}`}>
-                                  {quiz.difficulty || 'Medium'}
+                                <span
+                                  className={`td-difficulty ${getDifficultyColor(
+                                    quiz.difficulty
+                                  )}`}
+                                >
+                                  {quiz.difficulty || "Medium"}
                                 </span>
                               </div>
                             </div>
@@ -1252,28 +1513,65 @@ const TeacherDashboard = () => {
                           <div className="td-quiz-actions">
                             <button
                               className="td-quiz-btn td-quiz-btn-view"
-                              onClick={() => navigate(`/teacher/results/${quiz._id}`)}
+                              onClick={() =>
+                                navigate(
+                                  `/teacher/results/${quiz._id}`
+                                )
+                              }
                             >
-                              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                              <svg
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                />
                               </svg>
                               Results
                             </button>
                             <button
                               className="td-quiz-btn td-quiz-btn-edit"
-                              onClick={() => navigate(`/teacher/update-quiz/${quiz._id}`)}
+                              onClick={() =>
+                                navigate(
+                                  `/teacher/update-quiz/${quiz._id}`
+                                )
+                              }
                             >
-                              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              <svg
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
                               </svg>
                               Edit
                             </button>
                             <button
                               className="td-quiz-btn td-quiz-btn-delete"
-                              onClick={() => setDeleteConfirm(quiz._id)}
+                              onClick={() =>
+                                setDeleteConfirm(quiz._id)
+                              }
                             >
-                              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              <svg
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
                               </svg>
                               Delete
                             </button>
@@ -1287,7 +1585,13 @@ const TeacherDashboard = () => {
             </div>
 
             {/* Right Column - Quick Actions & Activity */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+              }}
+            >
               {/* Quick Actions */}
               <div className="td-panel">
                 <div className="td-panel-header">
@@ -1300,11 +1604,19 @@ const TeacherDashboard = () => {
                   {quickActions.map((action) => (
                     <button
                       key={action.to}
-                      className={`td-quick-btn ${action.primary ? 'td-quick-btn-primary' : ''}`}
+                      className={`td-quick-btn ${
+                        action.primary
+                          ? "td-quick-btn-primary"
+                          : ""
+                      }`}
                       onClick={() => navigate(action.to)}
                     >
-                      <span className="td-quick-btn-icon">{action.icon}</span>
-                      <span className="td-quick-btn-label">{action.label}</span>
+                      <span className="td-quick-btn-icon">
+                        {action.icon}
+                      </span>
+                      <span className="td-quick-btn-label">
+                        {action.label}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -1322,36 +1634,61 @@ const TeacherDashboard = () => {
                   <div className="td-activity-item">
                     <div className="td-activity-icon">📝</div>
                     <div className="td-activity-info">
-                      <div className="td-activity-text">New quiz submission received</div>
-                      <div className="td-activity-time">2 minutes ago</div>
+                      <div className="td-activity-text">
+                        New quiz submission received
+                      </div>
+                      <div className="td-activity-time">
+                        2 minutes ago
+                      </div>
                     </div>
                   </div>
                   <div className="td-activity-item">
                     <div className="td-activity-icon">👤</div>
                     <div className="td-activity-info">
-                      <div className="td-activity-text">Student joined your group</div>
-                      <div className="td-activity-time">15 minutes ago</div>
+                      <div className="td-activity-text">
+                        Student joined your group
+                      </div>
+                      <div className="td-activity-time">
+                        15 minutes ago
+                      </div>
                     </div>
                   </div>
                   <div className="td-activity-item">
                     <div className="td-activity-icon">✅</div>
                     <div className="td-activity-info">
-                      <div className="td-activity-text">Quiz grading completed</div>
-                      <div className="td-activity-time">1 hour ago</div>
+                      <div className="td-activity-text">
+                        Quiz grading completed
+                      </div>
+                      <div className="td-activity-time">
+                        1 hour ago
+                      </div>
                     </div>
                   </div>
                   <div className="td-activity-item">
                     <div className="td-activity-icon">📚</div>
                     <div className="td-activity-info">
-                      <div className="td-activity-text">Material request from student</div>
-                      <div className="td-activity-time">3 hours ago</div>
+                      <div className="td-activity-text">
+                        Material request from student
+                      </div>
+                      <div className="td-activity-time">
+                        3 hours ago
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="td-view-all">
                   <span>View All Activity</span>
-                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </div>
               </div>
