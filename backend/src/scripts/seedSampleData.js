@@ -501,9 +501,17 @@ const seed = async () => {
 
   await Game.insertMany([
     {
+      type: "sudoku",
+      content: {
+        puzzle: "5 3 . | . 7 . | . . .\n6 . . | 1 9 5 | . . .\n. 9 8 | . . . | . 6 .\n---------------------\n8 . . | . 6 . | . . 3\n4 . . | 8 . 3 | . . 1\n7 . . | . 2 . | . . 6\n---------------------\n. 6 . | . . . | 2 8 .\n. . . | 4 1 9 | . . 5\n. . . | . 8 . | . 7 9",
+        solution: "5 3 4 | 6 7 8 | 9 1 2\n6 7 2 | 1 9 5 | 3 4 8\n1 9 8 | 3 4 2 | 5 6 7\n---------------------\n8 5 9 | 7 6 1 | 4 2 3\n4 2 6 | 8 5 3 | 7 9 1\n7 1 3 | 9 2 4 | 8 5 6\n---------------------\n9 6 1 | 5 3 7 | 2 8 4\n2 8 7 | 4 1 9 | 6 3 5\n3 4 5 | 2 8 6 | 1 7 9"
+      },
+      date: todayKey,
+    },
+    {
       type: "scramble",
       content: { scrambled: "elcryce", answer: "recycle" },
-      date: todayKey,
+      date: yesterdayKey,
     },
     {
       type: "riddle",
