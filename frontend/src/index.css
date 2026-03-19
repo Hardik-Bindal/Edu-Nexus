@@ -121,8 +121,11 @@ a {
 /* ============ PREMIUM GLOBAL NAVBAR ============ */
 .sd-navbar {
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   z-index: 100;
+  /* relative is needed so the absolute mobile dropdown anchors correctly */
+  /* sticky also auto-provides a positioning context in most browsers */
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -218,6 +221,195 @@ a {
   font-size: 0.75rem;
   color: #0891b2;
   font-weight: 500;
+}
+
+/* Logout button inside navbar (desktop) */
+.sd-logout-btn {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #e11d48;
+  background: transparent;
+  border: 1px solid rgba(225, 29, 72, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.sd-logout-btn:hover {
+  background: rgba(225, 29, 72, 0.07);
+  border-color: rgba(225, 29, 72, 0.35);
+}
+
+/* Show/hide utilities for responsive behaviour */
+.sd-hide-mobile {
+  display: flex;
+}
+
+/* Hamburger button – hidden on desktop, visible on mobile */
+.sd-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(100, 116, 139, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+.sd-hamburger:hover {
+  background: rgba(100, 116, 139, 0.1);
+  border-color: rgba(100, 116, 139, 0.28);
+}
+
+/* Mobile slide-down menu */
+.sd-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(100, 116, 139, 0.14);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+  opacity: 0;
+}
+.sd-mobile-menu-open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+.sd-mobile-menu-inner {
+  padding: 1rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.sd-mobile-user-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(241, 245, 252, 0.9);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 116, 139, 0.1);
+}
+
+.sd-mobile-user-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.sd-mobile-user-role {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #0891b2;
+  letter-spacing: 0.06em;
+}
+
+.sd-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sd-mobile-nav-link {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+}
+.sd-mobile-nav-link:hover {
+  background: rgba(100, 116, 139, 0.07);
+  color: #0f172a;
+}
+.sd-mobile-nav-link-active {
+  background: rgba(8, 145, 178, 0.09);
+  color: #0891b2;
+  font-weight: 600;
+}
+
+.sd-mobile-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(225, 29, 72, 0.06);
+  border: 1px solid rgba(225, 29, 72, 0.2);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #e11d48;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-top: 0.25rem;
+}
+.sd-mobile-logout:hover {
+  background: rgba(225, 29, 72, 0.11);
+}
+
+/* Backdrop */
+.sd-mobile-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ---- Mobile breakpoint overrides ---- */
+@media (max-width: 1023px) {
+  .sd-hide-mobile {
+    display: none !important;
+  }
+  .sd-hamburger {
+    display: flex;
+  }
+  .sd-mobile-menu {
+    display: block;
+  }
+  .sd-mobile-backdrop {
+    display: block;
+  }
+  /* Shrink navbar padding on small screens */
+  .sd-navbar {
+    padding: 0 1rem;
+  }
+  /* Navbar needs position:relative so the absolute dropdown is positioned correctly */
+  .sd-navbar {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sd-navbar-title {
+    font-size: 1.05rem;
+  }
+  .sd-navbar-logo {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
 }
 
 /* ============ HERO ============ */

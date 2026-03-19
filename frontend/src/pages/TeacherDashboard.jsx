@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { teacherLinks } from "../constants/navLinks";
+import Navbar from "../components/Navbar";
 import { deleteQuiz, getQuizzes } from "../services/quizService";
 import { getUser } from "../services/session";
 
@@ -202,140 +203,9 @@ const TeacherDashboard = () => {
           66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-        /* Navbar */
-        .td-navbar {
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          background: rgba(255, 255, 255, 0.82);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(100, 116, 139, 0.12);
-          padding: 0 1.5rem;
-        }
-
-        .td-navbar-inner {
-          max-width: 1400px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 64px;
-        }
-
-        .td-navbar-brand {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .td-navbar-logo {
-          width: 36px;
-          height: 36px;
-        }
-
-        .td-navbar-title {
-          font-family: 'Space Grotesk', system-ui, sans-serif;
-          font-size: 1.25rem;
-          font-weight: 700;
-          background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .td-navbar-links {
-          display: none;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        @media (min-width: 1024px) {
-          .td-navbar-links {
-            display: flex;
-          }
-        }
-
-        .td-navbar-link {
-          padding: 0.5rem 1rem;
-          font-size: 0.875rem;
-          color: #64748b;
-          text-decoration: none;
-          border-radius: 8px;
-          transition: all 0.2s ease;
-        }
-
-        .td-navbar-link:hover {
-          color: #0f172a;
-          background: rgba(100, 116, 139, 0.08);
-        }
-
-        .td-navbar-link-active {
-          color: #7c3aed;
-          background: rgba(139, 92, 246, 0.08);
-        }
-
-        .td-navbar-user {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .td-navbar-avatar {
-          width: 36px;
-          height: 36px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 600;
-          color: white;
-          font-size: 0.875rem;
-        }
-
-        .td-navbar-role {
-          padding: 0.25rem 0.75rem;
-          background: rgba(139, 92, 246, 0.08);
-          border: 1px solid rgba(139, 92, 246, 0.18);
-          border-radius: 100px;
-          font-size: 0.75rem;
-          color: #7c3aed;
-          font-weight: 500;
-        }
-
-        /* Mobile Menu Button */
-        .td-mobile-menu-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          background: rgba(100, 116, 139, 0.06);
-          border: 1px solid rgba(100, 116, 139, 0.12);
-          border-radius: 10px;
-          color: #64748b;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .td-mobile-menu-btn:hover {
-          background: rgba(100, 116, 139, 0.1);
-          color: #0f172a;
-        }
-
-        @media (min-width: 1024px) {
-          .td-mobile-menu-btn {
-            display: none;
-          }
-        }
-
-        .td-mobile-menu-btn svg {
-          width: 20px;
-          height: 20px;
-        }
 
         /* Main Content */
+
         .td-main {
           position: relative;
           z-index: 10;
@@ -1212,83 +1082,7 @@ const TeacherDashboard = () => {
         )}
 
         {/* Navbar */}
-        <nav className="td-navbar">
-          <div className="td-navbar-inner">
-            <div className="td-navbar-brand">
-              <svg
-                className="td-navbar-logo"
-                viewBox="0 0 40 40"
-                fill="none"
-              >
-                <rect
-                  width="40"
-                  height="40"
-                  rx="12"
-                  fill="url(#td-logo-grad)"
-                />
-                <path
-                  d="M12 20L18 26L28 14"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <defs>
-                  <linearGradient
-                    id="td-logo-grad"
-                    x1="0"
-                    y1="0"
-                    x2="40"
-                    y2="40"
-                  >
-                    <stop stopColor="#8B5CF6" />
-                    <stop offset="1" stopColor="#EC4899" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span className="td-navbar-title">EduNexus</span>
-            </div>
-
-            <div className="td-navbar-links">
-              {teacherLinks.map((link, index) => (
-                <a
-                  key={link.to}
-                  href={link.to}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate(link.to);
-                  }}
-                  className={`td-navbar-link ${
-                    index === 0 ? "td-navbar-link-active" : ""
-                  }`}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="td-navbar-user">
-              <span className="td-navbar-role">Teacher</span>
-              <div className="td-navbar-avatar">
-                {user?.name?.charAt(0)?.toUpperCase() || "T"}
-              </div>
-              <button className="td-mobile-menu-btn">
-                <svg
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
+        <Navbar title="EduNexus" links={teacherLinks} />
 
         {/* Main Content */}
         <main className={`td-main ${mounted ? "td-mounted" : ""}`}>
